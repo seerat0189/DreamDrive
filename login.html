@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 0 10px;
+            background: url("https://wallpaper.dog/large/10986665.jpg"), #000;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .wrapper {
+            width: 400px;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(9px);
+            -webkit-backdrop-filter: blur(9px);
+            color: #fff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            position: relative;
+            border-bottom: 2px solid #ccc;
+            margin: 15px 0;
+        }
+
+        .input-field label {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            font-size: 16px;
+            pointer-events: none;
+            transition: 0.15s ease;
+        }
+
+        .input-field input {
+            width: 100%;
+            height: 40px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .input-field input:focus~label,
+        .input-field input:valid~label {
+            font-size: 0.8rem;
+            top: 10px;
+            transform: translateY(-120%);
+        }
+
+        .forget {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 25px 0 35px 0;
+        }
+
+        #remember {
+            accent-color: #fff;
+        }
+
+        .forget label {
+            display: flex;
+            align-items: center;
+        }
+
+        .forget label p {
+            margin-left: 8px;
+        }
+
+        .wrapper a {
+            color: #efefef;
+            text-decoration: none;
+        }
+
+        .wrapper a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background: #fff;
+            color: #000;
+            font-weight: 600;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 16px;
+            border: 2px solid transparent;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            color: #fff;
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .register,
+        .login {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .register-page,
+        .login-page {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper login-page active">
+        <form action="home.html">
+            <h2>Login</h2>
+            <div class="input-field">
+                <input type="text" required>
+                <label>Enter your email</label>
+            </div>
+            <div class="input-field">
+                <input type="password" required>
+                <label>Enter your password</label>
+            </div>
+            <div class="forget">
+                <label for="remember">
+                    <input type="checkbox" id="remember">
+                    <p>Remember me</p>
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit">Log In</button>
+            <div class="register">
+                <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="wrapper register-page">
+        <form action="home.html">
+            <h2>Register</h2>
+            <div class="input-field">
+                <input type="text" required>
+                <label>Enter your username</label>
+            </div>
+            <div class="input-field">
+                <input type="text" required>
+                <label>Enter your email</label>
+            </div>
+            <div class="input-field">
+                <input type="password" required>
+                <label>Enter your password</label>
+            </div>
+            <div class="forget">
+                <label for="terms">
+                    <input type="checkbox" id="terms" required>
+                    <p>I agree to the terms and conditions</p>
+                </label>
+            </div>
+            <button type="submit">Register</button>
+            <div class="login">
+                <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const showRegister = document.getElementById('show-register');
+        const showLogin = document.getElementById('show-login');
+        const loginPage = document.querySelector('.login-page');
+        const registerPage = document.querySelector('.register-page');
+
+        showRegister.addEventListener('click', () => {
+            loginPage.classList.remove('active');
+            registerPage.classList.add('active');
+        });
+
+        showLogin.addEventListener('click', () => {
+            registerPage.classList.remove('active');
+            loginPage.classList.add('active');
+        });
+    </script>
+</body>
+</html>

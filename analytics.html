@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Showroom Sales Analytics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+    
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        #piechart, #barchart, #linechart {
+            width: 500px;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .table-container {
+            margin: 0 auto;
+            width: 80%;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+    
+    </style>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart', 'bar', 'line']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            drawPieChart();
+            drawBarChart();
+            drawLineChart();
+        }
+
+        function drawPieChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Car Brand', 'Sales'],
+                ['Mercedes', 520],
+                ['Toyota', 630],
+                ['Lamborghini', 150],
+                ['BMW', 600],
+                ['Porsche', 400],
+                ['Volkswagen', 550],
+                ['Suzuki', 470],
+                ['Audi', 520],
+                ['Renault', 300]
+            ]);
+
+            var options = {
+                title: 'Car Sales Distribution in 2023',
+                pieHole: 0.4,
+                colors: ['#1a73e8', '#e91e63', '#00bcd4', '#8e44ad', '#f39c12', '#27ae60', '#e74c3c', '#9b59b6', '#3498db']
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+        function drawBarChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Mercedes', 'Toyota', 'Lamborghini', 'BMW', 'Porsche', 'Volkswagen', 'Suzuki', 'Audi', 'Renault'],
+                ['2019', 450, 600, 100, 580, 390, 500, 450, 480, 250],
+                ['2020', 470, 620, 110, 590, 395, 510, 460, 490, 260],
+                ['2021', 490, 640, 120, 610, 400, 520, 470, 500, 270],
+                ['2022', 510, 660, 130, 620, 410, 530, 480, 510, 280],
+                ['2023', 520, 630, 150, 600, 400, 550, 470, 520, 300]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Car Sales Over the Past 5 Years',
+                },
+                bars: 'vertical',
+                colors: ['#1a73e8', '#e91e63', '#00bcd4', '#8e44ad', '#f39c12', '#27ae60', '#e74c3c', '#9b59b6', '#3498db']
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('barchart'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+        function drawLineChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Year');
+            data.addColumn('number', 'Sales');
+
+            data.addRows([
+                [2019, 4000],
+                [2020, 4200],
+                [2021, 4500],
+                [2022, 4800],
+                [2023, 5000]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Total Sales Trend Over 5 Years'
+                },
+                hAxis: {
+                    title: 'Year'
+                },
+                vAxis: {
+                    title: 'Sales'
+                },
+                colors: ['#8e44ad']
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+
+
+    <div class="container">
+        <h2>Comprehensive Car Sales Analytics</h2>
+
+        <div class="chart-container">
+            <div id="piechart"></div>
+            <div id="barchart"></div>
+        </div>
+
+        <div class="chart-container">
+            <div id="linechart"></div>
+        </div>
+
+        <div class="table-container">
+            <h3>Yearly Sales Breakdown by Brand (2019-2023)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Mercedes</th>
+                        <th>Toyota</th>
+                        <th>Lamborghini</th>
+                        <th>BMW</th>
+                        <th>Porsche</th>
+                        <th>Volkswagen</th>
+                        <th>Suzuki</th>
+                        <th>Audi</th>
+                        <th>Renault</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2019</td>
+                        <td>450</td>
+                        <td>600</td>
+                        <td>100</td>
+                        <td>580</td>
+                        <td>390</td>
+                        <td>500</td>
+                        <td>450</td>
+                        <td>480</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td>2020</td>
+                        <td>470</td>
+                        <td>620</td>
+                        <td>110</td>
+                        <td>590</td>
+                        <td>395</td>
+                        <td>510</td>
+                        <td>460</td>
+                        <td>490</td>
+                        <td>260</td>
+                    </tr>
+                    <tr>
+                        <td>2021</td>
+                        <td>490</td>
+                        <td>640</td>
+                        <td>120</td>
+                        <td>610</td>
+                        <td>400</td>
+                        <td>520</td>
+                        <td>470</td>
+                        <td>500</td>
+                        <td>270</td>
+                    </tr>
+                    <tr>
+                        <td>2022</td>
+                        <td>510</td>
+                        <td>660</td>
+                        <td>130</td>
+                        <td>620</td>
+                        <td>410</td>
+                        <td>530</td>
+                        <td>480</td>
+                        <td>510</td>
+                        <td>280</td>
+                    </tr>
+                    <tr>
+                        <td>2023</td>
+                        <td>520</td>
+                        <td>630</td>
+                        <td>150</td>
+                        <td>600</td>
+                        <td>400</td>
+                        <td>550</td>
+                        <td>470</td>
+                        <td>520</td>
+                        <td>300</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
