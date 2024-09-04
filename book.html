@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Test Drive</title>
+    <link rel="stylesheet" href="book.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Book A Test Drive For Your Next Car</h1>
+        <a href="home.html"><button class="footer-button">Home</button></a>
+    </header>
+
+    <main>
+        <section class="booking-form">
+            <h2>Schedule Your Test Drive</h2>
+            <form action="#" method="post">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="car">Select Car:</label>
+                <select id="car" name="car" required>
+                    <option value="">Choose a car...</option>
+                    <option value="car1">Car Model 1</option>
+                    <option value="car2">Car Model 2</option>
+                    <option value="car3">Car Model 3</option>
+                </select>
+
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Preferred Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <button type="submit">Book Now</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>DREAM DRIVE</p>
+        <h5>email: dreamdrive@gmail.com</h5>
+        <h4>contact: 9876543210</h4>
+    </footer>
+</body>
+</html>
